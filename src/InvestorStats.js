@@ -41,37 +41,57 @@ class  InvestorStats extends React.Component{
                 </Spinner>
             )
         }
-        // else if (this.state.userData.stats==null)
-        // {
-        //     return (<br/>); //No trades (probably invalide user)
-        // }
+        else if (this.state.userData==null) //Placeholder card
+        {
+            return (
+                <Card 
+                bg={'success'}
+                text={'white'}
+                style={{ width: '18rem' }}
+                >
+                <Card.Body>
+                    <Card.Title>Investor Stats</Card.Title>
+                    <Card.Text>
+                            <div>Active since: {moment(new Date()).format("M/D/YYYY")}</div>
+                            <div>Total posts: 0</div>
+                            <div>Posts interpreted as trades: 0</div>
+
+                            <hr/>
+                            <div>Avg 1 day return: -</div>
+                            <div>Avg 2 day return: - </div>
+                            <div>Avg 7 day return: - </div>
+                            <div>Avg 30 day return: - </div>
+                    </Card.Text>
+                </Card.Body>
+                </Card>
+            );
+        }
         else
         {
+            return (
+                    
+                <Card 
+                bg={'success'}
+                text={'white'}
+                style={{ width: '18rem' }}
+                >
+                <Card.Body>
+                    <Card.Title>Investor Stats</Card.Title>
+                    <Card.Text>
+                            <div>Active since: {moment(this.state.userData.firstPost).format("M/D/YYYY")}</div>
+                            <div>Total posts: {this.state.userData.postCount}</div>
+                            <div>Posts interpreted as trades: {this.state.userData.tradeCount}</div>
 
-        return (
-                
-    <Card 
-      bg={'success'}
-      text={'white'}
-      style={{ width: '18rem' }}
-    >
-      <Card.Body>
-        <Card.Title>Investor Stats</Card.Title>
-        <Card.Text>
-                <div>Active since: {moment(this.state.userData.firstPost).format("M/D/YYYY")}</div>
-                <div>Total posts: {this.state.userData.postCount}</div>
-                <div>Posts interpreted as trades: {this.state.userData.tradeCount}</div>
+                            <hr/>
+                            <div>Avg 1 day return: {this.round(this.state.userData.meanPerformance[0].mean,2)}</div>
+                            <div>Avg 2 day return: {this.round(this.state.userData.meanPerformance[1].mean,2)} </div>
+                            <div>Avg 7 day return: {this.round(this.state.userData.meanPerformance[2].mean,2)}</div>
+                            <div>Avg 30 day return: {this.round(this.state.userData.meanPerformance[3].mean,2)} </div>
+                    </Card.Text>
+                </Card.Body>
+                </Card>
 
-                <hr/>
-                <div>Avg 1 day return: {this.round(this.state.userData.meanPerformance[0].mean,2)}</div>
-                <div>Avg 2 day return: {this.round(this.state.userData.meanPerformance[1].mean,2)} </div>
-                <div>Avg 7 day return: {this.round(this.state.userData.meanPerformance[2].mean,2)}</div>
-                <div>Avg 30 day return: {this.round(this.state.userData.meanPerformance[3].mean,2)} </div>
-        </Card.Text>
-      </Card.Body>
-    </Card>
-
-        );
+            );
         }
     }
 }

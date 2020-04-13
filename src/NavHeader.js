@@ -26,7 +26,7 @@ render()
       <Navbar 
       bg="dark" variant="dark" 
       >
-        <Navbar.Brand href="/">1 Million Monkeys (Social Media Investors)</Navbar.Brand>
+        <Navbar.Brand href="/">1 Million Monkeys</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
