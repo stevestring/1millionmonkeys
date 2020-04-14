@@ -34,8 +34,8 @@ render()
             <Nav.Link href="#link">Link</Nav.Link> */}
           </Nav>
           <Form inline onSubmit={this.mySubmitHandler}>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={this.myChangeHandler}/>
-            <Button type="submit" >Search User</Button>
+            <FormControl type="text" placeholder="username" className="mr-sm-2" onChange={this.myChangeHandler}/>
+            <Button type="submit" >Search</Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>

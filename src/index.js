@@ -8,8 +8,8 @@ import { Route,  BrowserRouter as Router } from 'react-router-dom'
 const routing = (
   <Router>
         <div>
-            <Route exact path="/" render={App}/>
-            <Route path="/index.html" render={App}/>             
+            <Route exact path="/" component={App}/>
+            <Route path="/index.html" component={App}/>           
             <Route path="/Investor/:user" render={(props) => <Investor user={props.match.params.user}/>} />
         </div>
   </Router>
