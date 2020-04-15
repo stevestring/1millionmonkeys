@@ -47,6 +47,28 @@ class  InvestorPosts extends React.Component{
         {
             return (<br/>); //No trades (probably invalide user)
         }
+        else if (this.state.userData.trades.length==0)
+        {
+            return (
+            
+                <Table responsive striped>
+                <thead>
+                    <tr>
+                    <th>Date</th>
+                    <th>Ticker</th>
+                    <th>Long/Short</th>
+                    <th>Title</th>
+                    <th>1Day</th>
+                    <th>2Day</th>
+                    <th>7Day</th>
+                    <th>30Day</th>
+                    </tr>
+                </thead><div>No posts where a trade could be identified</div>
+                </Table>
+            
+            
+            ); //No trades 
+        }
         else
         {
             return (  

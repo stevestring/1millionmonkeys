@@ -10,11 +10,20 @@ import FormControl from 'react-bootstrap/FormControl';
 
 class  NavHeader extends React.Component{
 
+  constructor(props) {
+    super(props);    
+    this.state = {
+      loaded: false,
+      username:null
+    };     
+  }
 
 mySubmitHandler = (event) => {
   event.preventDefault();
-  //alert("You are submitting " + this.state.username);
-  window.location.replace('/Investor/'+this.state.username);
+  if ( this.state.username!= null)
+  {
+    window.location.replace('/Investor/'+this.state.username);
+  }
 }
 myChangeHandler = (event) => {
   this.setState({username: event.target.value.trim()});
@@ -24,9 +33,16 @@ render()
 {
     return (
       <Navbar 
-      bg="dark" variant="dark" 
+     
       >
-        <Navbar.Brand href="/">1 Million Monkeys</Navbar.Brand>
+        <Navbar.Brand href="/">      
+        <img
+        src={process.env.PUBLIC_URL + '/monkey.png'}
+        width="30"
+        height="30"
+        className="d-inline-block align-top"
+        alt="React Bootstrap logo"/></Navbar.Brand><Navbar.Brand href="/">
+         1 Million Monkeys</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
