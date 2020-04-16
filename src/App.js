@@ -41,26 +41,28 @@ class App extends React.Component {
       <NavHeader/>
      
      
-     <Jumbotron><Row><Col><h1>
+     <Jumbotron><Row><Col md={6}>
+       <h1>
      Check the Track Record of Social Network Investors</h1>
            <br/>
      
      
            <Form inline onSubmit={this.mySubmitHandler}>
-            <FormControl as="select" className="mr-sm-2" value ="hello" disabled>
+            <FormControl as="select" className="mr-sm-2 d-none d-md-block" value ="hello" disabled>
             <option>r/wallstreetbets</option>
             </FormControl>
             <FormControl type="text" placeholder="username" className="mr-sm-2" onChange={this.myChangeHandler}/>
             <Button type="submit" >Search</Button>
-          </Form></Col><Col><img style={{class:'img-fluid'}} width= {500} src={process.env.PUBLIC_URL + '/Chimpanzee_seated_at_typewriter.jpg'} /></Col></Row>
+          </Form></Col>
+          <Col  class="d-none d-md-block"  md={6}><img class='img-fluid d-none d-md-block' src={process.env.PUBLIC_URL + '/Chimpanzee_seated_at_typewriter.jpg'} /></Col>
+          </Row>
           </Jumbotron>
        
-<Row>
+        <Row>
         <Col Col lg={6}  >
           
         <h2>Investing Insight on Social Media?</h2>
-        <p>
-           
+        <p>           
           Platforms like Reddit and Twitter have given rise to a new subcultures of investing enthusiasts who bravely put their investment ideas out there for the world to see.
           Could any of these stock prognosticators be the next Warren Buffet?
         </p> 
@@ -81,7 +83,7 @@ class App extends React.Component {
           If this proof of concept is successfull, we will be looking to add other subreddits and hopefully other platforms like Twitter.
         </p> 
         <p>
-        <strong>Our methodology is far from pefect</strong>, but it's a start. We are looking at ways to improve this in the future.
+        <strong>Our methodology is a work in progress</strong>, but it's a start. We are looking at ways to improve this in the future.
         </p> 
         </Col> 
         </Row>

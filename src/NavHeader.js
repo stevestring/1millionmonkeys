@@ -16,7 +16,7 @@ class  NavHeader extends React.Component{
       loaded: false,
       username:null
     };     
-  }
+}
 
 mySubmitHandler = (event) => {
   event.preventDefault();
@@ -32,7 +32,7 @@ myChangeHandler = (event) => {
 render()
 {
     return (
-      <Navbar 
+      <Navbar  expand="lg"
      
       >
         <Navbar.Brand href="/">      
