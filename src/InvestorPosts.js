@@ -94,7 +94,7 @@ class  InvestorPosts extends React.Component{
                                     <td>{data.ticker}</td>
                                     <td>{data.longShort}</td>
                                     <td><a href={'https://www.reddit.com/r/wallstreetbets/comments/'+
-                                        data.commentId}>{data.title}</a></td>
+                                        data.commentId}>{data.title.replace("Short", (match) => { return <strong>match.toUpperCase()</strong>;})}</a></td>
                                     <td>{this.round(data.performance[0].performance,2)}</td>
                                     <td>{this.round(data.performance[1].performance,2)}</td>
                                     <td>{this.round(data.performance[2].performance,2)}</td>
