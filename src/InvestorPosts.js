@@ -4,7 +4,17 @@ import Spinner from 'react-bootstrap/Spinner';
 import Badge from 'react-bootstrap/Badge';
 import moment from 'moment';
 
+import Highlighter from "react-highlight-words";
+
+import tickers from  './Tickers.json';
 import './App.css';
+
+const tickerRegExString = '/'+'\\b'+Object.keys(tickers).join('\\b|\\b')+'\\b'
+var tickerRegEx = new RegExp(tickerRegExString,"g");
+
+const Highlight = ({ children, highlightIndex }) => (
+    <strong className="highlighted-text">{children}</strong>
+  );
 
 class  InvestorPosts extends React.Component{
 
@@ -36,6 +46,8 @@ class  InvestorPosts extends React.Component{
 
     render()
     {
+        console.log (tickerRegEx);
+        
         if (!this.state.loaded)
         {
             return (
@@ -93,8 +105,18 @@ class  InvestorPosts extends React.Component{
                                     <td>{moment(data.created).format("M/D/YYYY") }</td>
                                     <td>{data.ticker}</td>
                                     <td>{data.longShort}</td>
-                                    <td><a href={'https://www.reddit.com/r/wallstreetbets/comments/'+
-                                        data.commentId}>{data.title.replace("Short", (match) => { return <strong>match.toUpperCase()</strong>;})}</a></td>
+                                    <td>
+                                        <a href={'https://www.reddit.com/r/wallstreetbets/comments/'+
+                                        //data.commentId}>{data.title.replace(/\bZM\b|\bINDA\b/g, (match) => {
+                                            data.commentId}>  
+                                            <Highlighter
+                                                highlightTag={Highlight}
+                                                searchWords={[tickerRegEx,/(sell|short)/i,/put/i,/call/i,/[0-9]{1,5}[P]/i,/[0-9]{1,5}[C]/i]}
+                                                autoEscape={false}
+                                                textToHighlight={data.title}
+                                              />
+                                    </a>
+                                    </td>
                                     <td>{this.round(data.performance[0].performance,2)}</td>
                                     <td>{this.round(data.performance[1].performance,2)}</td>
                                     <td>{this.round(data.performance[2].performance,2)}</td>
